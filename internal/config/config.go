@@ -1,10 +1,9 @@
 package config
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
-
-	"gopkg.in/yaml.v3"
 
 	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
@@ -26,18 +25,18 @@ type Config struct {
 // ─────────────────────────────────────────────────────────────
 
 type OrgConfig struct {
-	Name            string `yaml:"name"`
-	Sector          string `yaml:"sector"`
-	Country         string `yaml:"country"`
-	Timezone        string `yaml:"timezone"`
-	DataSensitivity string `yaml:"data_sensitivity"`
+	Name            string `json:"name"`
+	Sector          string `json:"sector"`
+	Country         string `json:"country"`
+	Timezone        string `json:"timezone"`
+	DataSensitivity string `json:"data_sensitivity"`
 }
 
 func LoadOrg(path string) (OrgConfig, error) {
 	var wrapper struct {
-		Org OrgConfig `yaml:"org"`
+		Org OrgConfig `json:"org"`
 	}
-	if err := loadYAML(path, &wrapper); err != nil {
+	if err := loadJSON(path, &wrapper); err != nil {
 		return OrgConfig{}, err
 	}
 	return wrapper.Org, nil
@@ -60,23 +59,23 @@ func (o OrgConfig) ToOrgContext(apps []model.App) model.OrgContext {
 // ─────────────────────────────────────────────────────────────
 
 type SourceEntry struct {
-	ID           string `yaml:"id"`
-	Type         string `yaml:"type"`
-	Name         string `yaml:"name"`
-	URL          string `yaml:"url"`
-	AuthKeyEnv   string `yaml:"auth_key_env"`
-	Confidence   string `yaml:"confidence"`
-	Enabled      bool   `yaml:"enabled"`
-	PullInterval string `yaml:"pull_interval"`
+	ID           string `json:"id"`
+	Type         string `json:"type"`
+	Name         string `json:"name"`
+	URL          string `json:"url"`
+	AuthKeyEnv   string `json:"auth_key_env"`
+	Confidence   string `json:"confidence"`
+	Enabled      bool   `json:"enabled"`
+	PullInterval string `json:"pull_interval"`
 }
 
 type SourcesConfig struct {
-	Sources []SourceEntry `yaml:"sources"`
+	Sources []SourceEntry `json:"sources"`
 }
 
 func LoadSources(path string) (SourcesConfig, error) {
 	var cfg SourcesConfig
-	if err := loadYAML(path, &cfg); err != nil {
+	if err := loadJSON(path, &cfg); err != nil {
 		return SourcesConfig{}, err
 	}
 	return cfg, nil
@@ -86,21 +85,20 @@ func LoadSources(path string) (SourcesConfig, error) {
 // Routing
 // ─────────────────────────────────────────────────────────────
 
-// RoutingRule matches alert severity + confidence to notification channels.
 type RoutingRule struct {
-	Severity   string   `yaml:"severity"`
-	Confidence []string `yaml:"confidence"`
-	Channels   []string `yaml:"channels"`
-	Format     string   `yaml:"format"`
+	Severity   string   `json:"severity"`
+	Confidence []string `json:"confidence"`
+	Channels   []string `json:"channels"`
+	Format     string   `json:"format"`
 }
 
 type RoutingConfig struct {
-	Rules []RoutingRule `yaml:"rules"`
+	Rules []RoutingRule `json:"rules"`
 }
 
 func LoadRouting(path string) (RoutingConfig, error) {
 	var cfg RoutingConfig
-	if err := loadYAML(path, &cfg); err != nil {
+	if err := loadJSON(path, &cfg); err != nil {
 		return RoutingConfig{}, err
 	}
 	return cfg, nil
@@ -113,30 +111,30 @@ func LoadRouting(path string) (RoutingConfig, error) {
 type RiskConfig struct {
 	Dimensions struct {
 		Likelihood struct {
-			Max     int `yaml:"max"`
-			Factors map[string]int `yaml:"factors"`
-		} `yaml:"likelihood"`
+			Max     int            `json:"max"`
+			Factors map[string]int `json:"factors"`
+		} `json:"likelihood"`
 		Impact struct {
-			Max     int `yaml:"max"`
-			Factors map[string]int `yaml:"factors"`
-		} `yaml:"impact"`
+			Max     int            `json:"max"`
+			Factors map[string]int `json:"factors"`
+		} `json:"impact"`
 		Exposure struct {
-			Max     int `yaml:"max"`
-			Factors map[string]int `yaml:"factors"`
-		} `yaml:"exposure"`
+			Max     int            `json:"max"`
+			Factors map[string]int `json:"factors"`
+		} `json:"exposure"`
 		Confidence struct {
-			Max     int `yaml:"max"`
-			Factors map[string]int `yaml:"factors"`
-		} `yaml:"confidence"`
-	} `yaml:"dimensions"`
+			Max     int            `json:"max"`
+			Factors map[string]int `json:"factors"`
+		} `json:"confidence"`
+	} `json:"dimensions"`
 	Severity struct {
-		Thresholds map[string]float64 `yaml:"thresholds"`
-	} `yaml:"severity"`
+		Thresholds map[string]float64 `json:"thresholds"`
+	} `json:"severity"`
 }
 
 func LoadRisk(path string) (RiskConfig, error) {
 	var cfg RiskConfig
-	if err := loadYAML(path, &cfg); err != nil {
+	if err := loadJSON(path, &cfg); err != nil {
 		return RiskConfig{}, err
 	}
 	return cfg, nil
@@ -147,17 +145,17 @@ func LoadRisk(path string) (RiskConfig, error) {
 // ─────────────────────────────────────────────────────────────
 
 type MatcherEntry struct {
-	Name    string `yaml:"name"`
-	Enabled bool   `yaml:"enabled"`
+	Name    string `json:"name"`
+	Enabled bool   `json:"enabled"`
 }
 
 type MatchersConfig struct {
-	Matchers []MatcherEntry `yaml:"matchers"`
+	Matchers []MatcherEntry `json:"matchers"`
 }
 
 func LoadMatchers(path string) (MatchersConfig, error) {
 	var cfg MatchersConfig
-	if err := loadYAML(path, &cfg); err != nil {
+	if err := loadJSON(path, &cfg); err != nil {
 		return MatchersConfig{}, err
 	}
 	return cfg, nil
@@ -170,42 +168,36 @@ func LoadMatchers(path string) (MatchersConfig, error) {
 func LoadAll(configDir string) (*Config, []model.App, error) {
 	cfg := &Config{}
 
-	// Org
-	org, err := LoadOrg(configDir + "/org.yaml")
+	org, err := LoadOrg(configDir + "/org.json")
 	if err != nil {
 		return nil, nil, fmt.Errorf("org: %w", err)
 	}
 	cfg.Org = org
 
-	// Sources
-	sources, err := LoadSources(configDir + "/sources.yaml")
+	sources, err := LoadSources(configDir + "/sources.json")
 	if err != nil {
 		return nil, nil, fmt.Errorf("sources: %w", err)
 	}
 	cfg.Sources = sources
 
-	// Routing
-	routing, err := LoadRouting(configDir + "/routing.yaml")
+	routing, err := LoadRouting(configDir + "/routing.json")
 	if err != nil {
 		return nil, nil, fmt.Errorf("routing: %w", err)
 	}
 	cfg.Routing = routing
 
-	// Risk
-	risk, err := LoadRisk(configDir + "/risk.yaml")
+	risk, err := LoadRisk(configDir + "/risk.json")
 	if err != nil {
 		return nil, nil, fmt.Errorf("risk: %w", err)
 	}
 	cfg.Risk = risk
 
-	// Matchers
-	matchers, err := LoadMatchers(configDir + "/matchers.yaml")
+	matchers, err := LoadMatchers(configDir + "/matchers.json")
 	if err != nil {
 		return nil, nil, fmt.Errorf("matchers: %w", err)
 	}
 	cfg.Matchers = matchers
 
-	// Tech stack (CSV)
 	apps, err := ParseTechStack(configDir + "/techstack.csv")
 	if err != nil {
 		return nil, nil, fmt.Errorf("techstack: %w", err)
@@ -215,15 +207,15 @@ func LoadAll(configDir string) (*Config, []model.App, error) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// YAML helper
+// JSON helper
 // ─────────────────────────────────────────────────────────────
 
-func loadYAML(path string, v interface{}) error {
+func loadJSON(path string, v interface{}) error {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return fmt.Errorf("read %s: %w", path, err)
 	}
-	if err := yaml.Unmarshal(data, v); err != nil {
+	if err := json.Unmarshal(data, v); err != nil {
 		return fmt.Errorf("parse %s: %w", path, err)
 	}
 	return nil
