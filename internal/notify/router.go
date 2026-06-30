@@ -15,7 +15,7 @@ type Rule struct {
 	Severity   string   `yaml:"severity"`
 	Confidence []string `yaml:"confidence"`
 	Channels   []string `yaml:"channels"`
-	Format     string   `yaml:"format"` // "realtime", "daily_digest", "weekly_digest"
+	Format     string   `yaml:"format"`
 }
 
 // Router matches alerts to notification channels based on routing rules.
