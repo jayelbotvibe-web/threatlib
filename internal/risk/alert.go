@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // DedupKey generates a deduplication hash from event + score result.

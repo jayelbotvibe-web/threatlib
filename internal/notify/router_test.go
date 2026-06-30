@@ -7,11 +7,11 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/config"
-	"github.com/jayelbotvibe-web/threatlib/internal/match"
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
-	"github.com/jayelbotvibe-web/threatlib/internal/risk"
-	"github.com/jayelbotvibe-web/threatlib/internal/source"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/config"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/match"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/risk"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/source"
 )
 
 func loadOrgCtx(t *testing.T) model.OrgContext {

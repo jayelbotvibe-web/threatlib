@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
-	"github.com/jayelbotvibe-web/threatlib/internal/store"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/store"
 )
 
 // fixtureServer creates an httptest server that serves MISP fixture JSON files.

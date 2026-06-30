@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // Dimension max values (must match risk.yaml).

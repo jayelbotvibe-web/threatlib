@@ -6,7 +6,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // ─────────────────────────────────────────────────────────────

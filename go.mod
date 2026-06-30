@@ -1,4 +1,4 @@
-module github.com/jayelbotvibe-web/threatlib
+module github.com/jayelbotvibe-web/threat-intel-arbiter
 
 go 1.25.0
 

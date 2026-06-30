@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 func TestParseTechStack(t *testing.T) {

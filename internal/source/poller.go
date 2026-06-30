@@ -7,8 +7,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
-	"github.com/jayelbotvibe-web/threatlib/internal/store"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/store"
 )
 
 // MISPPoller pulls events from a MISP instance on a schedule.

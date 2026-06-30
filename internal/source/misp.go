@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // MISPClient is a REST client for the MISP threat intelligence platform.

@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 func TestDedupKey(t *testing.T) {

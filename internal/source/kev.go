@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // KEVEntry is a single entry in the CISA KEV catalog.

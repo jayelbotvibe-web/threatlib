@@ -1,7 +1,7 @@
 package match
 
 import (
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // KEVMatcher checks whether any CVE in the event appears in the

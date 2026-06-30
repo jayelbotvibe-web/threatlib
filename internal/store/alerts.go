@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // SaveAlert stores an alert in the database. Returns false if the alert

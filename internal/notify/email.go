@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // EmailNotifier sends alerts via SMTP.

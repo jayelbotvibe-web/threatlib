@@ -3,7 +3,7 @@ package match
 import (
 	"strings"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // SectorMatcher checks event tags against sector taxonomies and

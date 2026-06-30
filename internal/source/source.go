@@ -6,7 +6,7 @@ package source
 import (
 	"context"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // Source defines a threat intelligence source.

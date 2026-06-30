@@ -6,7 +6,7 @@ package match
 import (
 	"log"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // Engine runs a set of matchers against each threat event.

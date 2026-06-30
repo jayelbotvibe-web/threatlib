@@ -3,7 +3,7 @@ package store
 import (
 	"fmt"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // ImportTechStack replaces the tech stack with the given apps and returns delta info.

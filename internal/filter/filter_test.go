@@ -3,7 +3,7 @@ package filter
 import (
 	"testing"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 func TestFilter_Allow(t *testing.T) {

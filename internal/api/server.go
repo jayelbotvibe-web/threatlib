@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/config"
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
-	"github.com/jayelbotvibe-web/threatlib/internal/store"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/config"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/store"
 )
 
 //go:embed dashboard.html

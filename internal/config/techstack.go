@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // ParseTechStack reads a CSV file and returns the application inventory.

@@ -6,7 +6,7 @@ package filter
 import (
 	"strings"
 
-	"github.com/jayelbotvibe-web/threatlib/internal/model"
+	"github.com/jayelbotvibe-web/threat-intel-arbiter/internal/model"
 )
 
 // Filter holds cached warninglist and noticelist data used to drop
