@@ -718,7 +718,7 @@ Everything else is Go standard library.
 
 ```bash
 # Build
-go build -o arbiter ./cmd/threatlib/
+go build -o arbiter ./cmd/arbiter/
 
 # Run
 export MISP_API_KEY="xxx"
@@ -826,7 +826,7 @@ binary that runs in their existing environment is an easy yes.
 
 ```
 threat-intel-arbiter/
-├── cmd/threatlib/main.go
+├── cmd/arbiter/main.go
 ├── internal/
 │   ├── source/                    # Threat source connectors
 │   │   ├── source.go              # Source interface + registry
