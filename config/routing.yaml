@@ -1,4 +1,4 @@
-# threatlib — Alert Routing Rules
+# Threat Intel Arbiter — Alert Routing Rules
 # Rules evaluated top-to-bottom. First match on (severity + confidence) wins.
 
 rules:

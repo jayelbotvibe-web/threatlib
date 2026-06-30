@@ -25,7 +25,7 @@ type Server struct {
 	EventQueue chan<- model.ThreatEvent
 }
 
-// NewServer creates an HTTP server for the threatlib API.
+// NewServer creates an HTTP server for the Threat Intel Arbiter API.
 func NewServer(db *store.DB, configDir string, adminKey string) *Server {
 	s := &Server{
 		DB:        db,

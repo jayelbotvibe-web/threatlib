@@ -1,4 +1,4 @@
-# threatlib — Risk Prioritization Configuration
+# Threat Intel Arbiter — Risk Prioritization Configuration
 # ⚠ All thresholds are initial values. Must be calibrated against production data.
 
 dimensions:

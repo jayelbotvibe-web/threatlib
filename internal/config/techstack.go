@@ -1,4 +1,4 @@
-// Package config parses and validates threatlib configuration files.
+// Package config parses and validates Threat Intel Arbiter configuration files.
 package config
 
 import (

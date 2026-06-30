@@ -1,4 +1,4 @@
-# threatlib — Threat Sources
+# Threat Intel Arbiter — Threat Sources
 sources:
   - id: misp-primary
     type: misp

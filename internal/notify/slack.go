@@ -103,7 +103,7 @@ func (n *TeamsNotifier) Send(alert model.Alert) error {
 	payload := map[string]interface{}{
 		"@type":    "MessageCard",
 		"@context": "https://schema.org/extensions",
-		"summary":  fmt.Sprintf("threatlib: %s alert", alert.Severity),
+		"summary":  fmt.Sprintf("Threat Intel Arbiter: %s alert", alert.Severity),
 		"title":    fmt.Sprintf("[%s] %s", strings.ToUpper(alert.Severity), alert.Explanation[:min(len(alert.Explanation), 100)]),
 		"text":     alert.Explanation,
 		"sections": []map[string]interface{}{

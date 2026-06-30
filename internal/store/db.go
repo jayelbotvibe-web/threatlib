@@ -1,4 +1,4 @@
-// Package store provides SQLite database access for threatlib.
+// Package store provides SQLite database access for Threat Intel Arbiter.
 // Uses modernc.org/sqlite (pure Go, no CGO).
 package store
 

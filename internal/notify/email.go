@@ -31,7 +31,7 @@ func NewEmailNotifier(host, port, from, password string) *EmailNotifier {
 	if from == "" {
 		from = os.Getenv("SMTP_FROM")
 		if from == "" {
-			from = "threatlib@localhost"
+			from = "arbiter@localhost"
 		}
 	}
 	if password == "" {
@@ -53,7 +53,7 @@ func (n *EmailNotifier) Send(alert model.Alert) error {
 	}
 
 	// Build plain text email
-	subject := fmt.Sprintf("[threatlib] %s: %s",
+	subject := fmt.Sprintf("[Threat Intel Arbiter] %s: %s",
 		strings.ToUpper(alert.Severity), alert.Explanation[:min(len(alert.Explanation), 80)])
 
 	body := fmt.Sprintf("From: %s\r\n", n.From)

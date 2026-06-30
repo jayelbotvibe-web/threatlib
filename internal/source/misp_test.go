@@ -15,7 +15,7 @@ import (
 )
 
 // fixtureServer creates an httptest server that serves MISP fixture JSON files.
-// It mimics the MISP REST API endpoints that threatlib uses.
+// It mimics the MISP REST API endpoints that Threat Intel Arbiter uses.
 func fixtureServer(t *testing.T) *httptest.Server {
 	t.Helper()
 

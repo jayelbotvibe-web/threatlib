@@ -1,4 +1,4 @@
-# threatlib — Matchers Configuration
+# Threat Intel Arbiter — Matchers Configuration
 matchers:
   - name: CVEMatcher
     enabled: true

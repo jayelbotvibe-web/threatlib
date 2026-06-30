@@ -1,4 +1,4 @@
-// Package model defines the canonical data types used throughout threatlib.
+// Package model defines the canonical data types used throughout Threat Intel Arbiter.
 // Every component operates on these types. Source-specific details are
 // isolated in normalizers under internal/source/.
 package model
