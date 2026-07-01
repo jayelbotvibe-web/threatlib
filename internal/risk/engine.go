@@ -333,7 +333,20 @@ func (e *Engine) Explain(result ScoreResult, event model.ThreatEvent, matches []
 
 	// Confidence
 	b.WriteString(fmt.Sprintf("\nConfidence: %d/%d (%s)\n", result.Confidence, maxConfidence, result.ConfidenceLabel))
-	b.WriteString(fmt.Sprintf("  • Source confidence: %s\n", event.SourceConfidence))
+	b.WriteString(fmt.Sprintf("  • Source: %s (%s confidence)\n", event.Source, event.SourceConfidence))
+	// Per-source attribution
+	for _, m := range matches {
+		if m.KEVMatch {
+			b.WriteString("  • CISA KEV confirmed (+3)\n")
+		}
+	}
+	if event.Source == "misp" {
+		b.WriteString("  • MISP community trust (+1)\n")
+	}
+	b.WriteString("  • Default baseline (+1)\n")
+
+	// SSVC Action
+	b.WriteString(fmt.Sprintf("\nAction: %s", SSVCAction(result.Severity, result.ConfidenceLabel)))
 
 	// Score
 	b.WriteString(fmt.Sprintf("\nScore: (%d × %d × %d) / (%d × %d × %d) = %.2f → %s",

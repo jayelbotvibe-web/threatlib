@@ -80,6 +80,7 @@ type Alert struct {
 	EventID     string   `json:"event_id"`
 	Severity    string   `json:"severity"`
 	Confidence  string   `json:"confidence"`
+	Action      string   `json:"action"`       // SSVC: "Act Now", "Schedule", "Track", "Monitor"
 	Explanation string   `json:"explanation"`
 	Status      string   `json:"status"`
 	MatchedApps []string `json:"matched_apps"`

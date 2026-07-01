@@ -33,10 +33,29 @@ func NewAlert(event model.ThreatEvent, result ScoreResult, matches []model.Match
 		EventID:     event.ID,
 		Severity:    result.Severity,
 		Confidence:  result.ConfidenceLabel,
+		Action:      SSVCAction(result.Severity, result.ConfidenceLabel),
 		Explanation: result.Explanation,
 		Status:      "new",
 		MatchedApps: apps,
 		CreatedAt:   time.Now().Format(time.RFC3339),
+	}
+}
+
+// SSVCAction maps severity + confidence to an SSVC action directive.
+func SSVCAction(severity, confidence string) string {
+	switch {
+	case severity == "critical" && confidence == "HIGH":
+		return "Act Now"
+	case severity == "critical":
+		return "Schedule"
+	case severity == "high" && (confidence == "HIGH" || confidence == "MEDIUM"):
+		return "Schedule"
+	case severity == "high":
+		return "Track"
+	case severity == "medium":
+		return "Track"
+	default:
+		return "Monitor"
 	}
 }
 
